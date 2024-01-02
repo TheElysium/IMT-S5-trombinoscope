@@ -1,0 +1,17 @@
+{
+  "name": "fil-a3-trombinoscope",
+  "version": "1.0.0",
+  "description": "Trombinoscope root package",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "server": "cd server && npm start",
+    "client": "cd client && npm run dev"
+  },
+  "author": "Luka Signe--Morice",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
