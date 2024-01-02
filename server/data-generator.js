@@ -1,41 +1,35 @@
 const faker = require('faker');
-const {fa} = require("faker/lib/locales");
 
 function generateRandomData() {
     const programs = [];
 
-    // Generate data for each program (FIL, FIT, FISE)
-    ['FIL', 'FIT', 'FISE'].forEach((programName, index) => {
+    ['FIL', 'FIT', 'FISE'].forEach((programName) => {
         const program = {
-            id: index,
+            id: programName,
             name: programName,
-            promotions: {},
+            promotions: [],
         };
-
-        // Generate data for each promotion (e.g., 2077, 2078, 2079)
         for (let year = 2077; year <= 2080; year++) {
             const promotion = {
-                id: year,
+                id: `${programName}-${year}`,
                 year: year,
                 students: generateRandomStudentsWithId(),
             };
-
-            program.promotions[year] = promotion;
+            program.promotions.push(promotion);
         }
-
         programs.push(program);
     });
 
-    return { programs };
+    return {programs};
 }
 
 function generateRandomStudentsWithId() {
-    const students = {};
+    const students = [];
     const studentCount = 30;
 
     for (let i = 0; i < studentCount; i++) {
         const studentId = faker.datatype.uuid();
-        students[studentId] = {
+        const student = {
             id: studentId,
             last_name: faker.name.lastName(),
             first_name: faker.name.firstName(),
@@ -48,13 +42,9 @@ function generateRandomStudentsWithId() {
                 logo: faker.image.business(),
             },
         };
+        students.push(student);
     }
-
     return students;
 }
 
-// Generate the JSON data
-const generatedData = generateRandomData();
-console.log(JSON.stringify(generatedData, null, 2));
-
-module.exports={generateRandomData}
+module.exports = {generateRandomData};
