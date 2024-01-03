@@ -1,42 +1,84 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+}
+
+#app-container {
+  margin: var(--app-container-margin-vertical) var(--app-container-margin-horizontal);
+  height: calc(100vh - 2 * var(--app-container-margin-vertical));
+  display: flex;
+}
+
+#vertical-title {
+  background-color: var(--background-color-light);
+  font-weight: 800;
+  font-size: 3.8rem;
+  word-wrap: break-word;
+  color: var(--text-color-light);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  margin: 0;
+  height: 100%;
   text-align: center;
+  padding: 0 1.5vw;
+  border-radius: 1.2rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+#app-content {
+  display: flex;
+  flex-direction: column;
+  /*background-color: red;*/
+  flex-grow: 1;
+  margin: 0 0 0 4vw;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#top-bar {
+  display: flex;
+  height: 6%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #7157FF;
+  border-radius: 1.2rem;
+  color: var(--text-color-light);
+  margin-right: 1.5vw;
 }
 
-.card {
-  padding: 2em;
+.selector h2 {
+  margin: 0 2vw;
+  font-weight: 800;
+  font-size: 1.8rem;
 }
 
-.read-the-docs {
-  color: #888;
+#search-bar {
+  display: flex;
+  align-items: center;
+  background-color: var(--background-color-light);
+  border-radius: 1.2rem;
+  margin-left: auto;
+  margin-right: 3vw;
+  width: 40%;
+  padding-left: 1vw;
+  padding-right: 1vw;
+}
+
+#search-bar input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  margin: 0 1.5vw;
+  width: 100%;
+}
+
+#search-bar input, input::placeholder {
+  color: #7157FF;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: "Syne", sans-serif;
+  opacity: 1;
+  text-overflow: ellipsis;
 }

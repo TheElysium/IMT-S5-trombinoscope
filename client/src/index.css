@@ -2,5 +2,9 @@
 
 :root {
   font-family: "Syne", sans-serif;
-  background-color: #D6D2F0;
+  --background-color: #D6D2F0;
+  --background-color-light: #A99BF2;
+  --app-container-margin-vertical: 4vw;
+  --app-container-margin-horizontal: 7vh;
+  --text-color-light: #D8D4F1;
 }
