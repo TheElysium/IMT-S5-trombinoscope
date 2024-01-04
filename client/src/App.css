@@ -2,6 +2,7 @@ html, body {
   margin: 0;
   padding: 0;
   background-color: var(--background-color);
+  font-family: "Syne", sans-serif;
 }
 
 #app-container {
@@ -14,7 +15,6 @@ html, body {
   background-color: var(--background-color-light);
   font-weight: 800;
   font-size: 3.8rem;
-  word-wrap: break-word;
   color: var(--text-color-light);
   writing-mode: vertical-rl;
   transform: rotate(180deg);
@@ -28,22 +28,24 @@ html, body {
 #app-content {
   display: flex;
   flex-direction: column;
-  /*background-color: red;*/
   flex-grow: 1;
   margin: 0 0 0 4vw;
 }
 
 #top-bar {
   display: flex;
-  height: 6%;
+}
+
+.selector, #search-bar {
+  display: flex;
+  align-items: center;
+  border-radius: 1.2rem;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
 }
 
 .selector {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: #7157FF;
-  border-radius: 1.2rem;
   color: var(--text-color-light);
   margin-right: 1.5vw;
 }
@@ -55,12 +57,9 @@ html, body {
 }
 
 #search-bar {
-  display: flex;
-  align-items: center;
   background-color: var(--background-color-light);
-  border-radius: 1.2rem;
   margin-left: auto;
-  margin-right: 3vw;
+  /*margin-right: 3vw;*/
   width: 40%;
   padding-left: 1vw;
   padding-right: 1vw;
@@ -72,13 +71,42 @@ html, body {
   outline: none;
   margin: 0 1.5vw;
   width: 100%;
-}
-
-#search-bar input, input::placeholder {
   color: #7157FF;
   font-size: 1.5rem;
   font-weight: 700;
   font-family: "Syne", sans-serif;
-  opacity: 1;
-  text-overflow: ellipsis;
+}
+
+/*
+#carousel-arrow-up, #carousel-arrow-down {
+  width: 100%;
+  height: 3%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1.5vh;
+}
+
+#carousel-arrow-down {
+  transform: rotate(180deg);
+}
+*/
+
+#trombinoscope-grid-container {
+  margin-top: 6vh;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+#trombinoscope-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2vw 2vw;
+}
+
+.student {
+  background-color: #776cff;
+  aspect-ratio: 1/1;
+  border-radius: 1rem;
 }
