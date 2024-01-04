@@ -1,5 +1,3 @@
-import React, { useState } from 'react';
-
 export function SelectorComponent({ selected, options, setSelected }) {
     const renderSelectors = () => {
         return (
