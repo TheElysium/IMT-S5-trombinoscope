@@ -2,6 +2,7 @@ const express = require('express');
 const {graphqlHTTP} = require('express-graphql');
 const {buildSchema} = require('graphql');
 const {generateRandomData} = require('./data-generator');
+const cors = require('cors');
 
 const data = generateRandomData();
 
@@ -74,6 +75,7 @@ const resolvers = {
 };
 
 const app = express();
+app.use(cors());
 app.use(
     '/graphql',
     graphqlHTTP({
