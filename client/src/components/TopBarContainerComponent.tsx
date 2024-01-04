@@ -18,12 +18,11 @@ export function TopBarContainerComponent() {
         }
     `;
 
-    const loadPrograms = () => {request(GRAPHQL_ENDPOINT, programsQuery)};
+    const loadPrograms = async () => {return await request(GRAPHQL_ENDPOINT, programsQuery);};
     const { isLoading, error, data, refetch } = useQuery({
         queryKey: ['programs'],
         queryFn: loadPrograms,
     });
-    console.log(data)
 
     const programs = ["FIL", "FIT", "FISE"];
     const promotions = ["2021", "2022", "2023", "2024", "2025", "2026", "2027"];
