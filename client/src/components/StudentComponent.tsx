@@ -11,6 +11,11 @@ export function StudentComponent() {
                 <h3>NOM</h3>
                 <img className="company-icon" src={PlaceholderCompanyPic} alt=""/>
             </div>
+            <div className="student-detailed-infos">
+                <p><span>Promotion :</span> FIL 2024</p>
+                <p><span>Promotion :</span> FIL 2024</p>
+                <p><span>Promotion :</span> FIL 2024</p>
+            </div>
         </div>
     )
 }
