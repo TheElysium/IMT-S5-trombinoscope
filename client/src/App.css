@@ -172,6 +172,7 @@ html, body {
   position: relative;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
+  display: inline;
 }
 
 .student-profile-picture {
