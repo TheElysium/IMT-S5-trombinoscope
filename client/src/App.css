@@ -32,6 +32,7 @@ html, body {
   flex-grow: 1;
   margin: 0 0 0 4vw;
   max-width: 80vw;
+  position: relative;
 }
 
 #top-bar {
@@ -172,7 +173,8 @@ html, body {
   position: relative;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
-  display: inline;
+  display: flex;
+  flex-direction: column;
 }
 
 .student-profile-picture {
@@ -231,7 +233,24 @@ html, body {
 
 .student-detailed-infos {
   display: none;
+  position: absolute;
+  height: 100%;
+  box-sizing: border-box;
+  background-color: #A99BF2;
+  transition: opacity 1s ease-in-out;
+  border-radius: 0 1rem 1rem 0;
+  opacity: 0;
+  padding: 1vh 1vw;
+  width: 20vw;
 }
+
+.student-detailed-infos p{
+    margin: 0;
+    padding: 0;
+    font-size: 1.2rem;
+    color: white;
+}
+
 /*
 
 .student-selected {
