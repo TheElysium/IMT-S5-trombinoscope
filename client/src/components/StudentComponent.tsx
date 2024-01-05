@@ -1,6 +1,6 @@
 import PlaceholderPic from '../assets/placeholder.png';
 import PlaceholderCompanyPic from '../assets/placeholder-company.png';
-import {useEffect, useRef} from "react";
+import {useRef} from "react";
 
 export function StudentComponent({overlay, scrollPosition}){
     const studentTile = useRef(null);
@@ -9,13 +9,13 @@ export function StudentComponent({overlay, scrollPosition}){
     const handleClick = () => {
         studentDetailedInfos.current.style.display = "block";
         studentDetailedInfos.current.style.opacity = "1";
-        studentDetailedInfos.current.style.left = `${studentTile.current.offsetWidth}px`;
+        studentDetailedInfos.current.style.left = `${studentTile.current.offsetWidth - 20}px`;
 
         console.log(scrollPosition)
         const translateX = overlay.current.offsetWidth/2 - studentTile.current.offsetLeft - studentTile.current.offsetWidth/2 - studentDetailedInfos.current.offsetWidth/2;
         const translateY = overlay.current.offsetHeight/2 - studentTile.current.offsetTop - studentTile.current.offsetHeight/2 + scrollPosition;
         studentTile.current.style.transform = `translate(${translateX}px, ${translateY}px)`;
-        studentTile.current.style.zIndex = "2";
+        studentTile.current.style.zIndex = "3";
 
         overlay.current.style.zIndex = "1";
         overlay.current.style.opacity = ".7";
@@ -50,8 +50,14 @@ export function StudentComponent({overlay, scrollPosition}){
             </div>
             <div className="student-detailed-infos" ref={studentDetailedInfos}>
                 <p><span>Promotion :</span> FIL 2024</p>
-                <p><span>Promotion :</span> FIL 2024</p>
-                <p><span>Promotion :</span> FIL 2024</p>
+                <p><span>Entreprise :</span> Google</p>
+                <br/>
+                <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.”</p>
+                <br/>
+                <div className="student-links">
+                    <a href="">Profil LinkedIn ↗</a>
+                    <a href="">Site web ↗</a>
+                </div>
             </div>
         </div>
     )
