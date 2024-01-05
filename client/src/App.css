@@ -278,3 +278,120 @@ html, body {
   font-size: 1.2rem;
   transition: color 0.3s ease-in-out;
 }
+
+#add-student-form {
+  position: absolute;
+  /*center*/
+  top: 25%;
+  left: 25%;
+  border-radius: 1rem;
+  background-color: #A99BF2;
+  padding: 2vw;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto auto;
+  gap: 2vh 3vw;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "add-student-profile-picture add-student-mandatory add-student-mandatory"
+    "add-student-description add-student-description add-student-description"
+    "add-student-linkedin add-student-linkedin add-student-linkedin"
+    "add-student-website add-student-website add-student-website";
+}
+
+#add-student-form input[type=text],
+#add-student-form textarea {
+  width: 100%;
+  background-color: #7157FF;
+  border: none;
+  border-radius: 1rem;
+  height: 5vh;
+  color: white;
+  font-size: 1.2rem;
+  padding-left: 1vw;
+  box-sizing: border-box;
+}
+
+#add-student-form input {
+  display: block;
+  margin-top: 1vh;
+}
+
+#add-student-form input:focus, #add-student-form textarea:focus {
+  outline: none;
+}
+
+#add-student-form label, .fake-label {
+  color: #7157FF;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+/*#add-student-form input[type=file] {
+  object-fit: cover;
+  border-radius: 1rem;
+  aspect-ratio: 1/1;
+  background-color: #7157FF;
+}*/
+
+.add-student-profile-picture input[type=file],
+.add-student-company-logo input[type=file] {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+
+.add-student-profile-picture label {
+  border-radius: 1rem;
+  aspect-ratio: 1/1;
+  background-color: #7157FF;
+  height: 15vh;
+  margin-top: 1vh;
+  cursor: pointer;
+}
+
+.add-student-company-logo label {
+  border-radius: 1rem;
+  aspect-ratio: 1/1;
+  background-color: #7157FF;
+  margin-top: 1vh;
+  height: 5vh;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.add-student-description {
+  grid-area: add-student-description;
+}
+
+.add-student-linkedin {
+  grid-area: add-student-linkedin;
+}
+
+.add-student-website {
+  grid-area: add-student-website;
+}
+
+.add-student-profile-picture {
+  grid-area: add-student-profile-picture;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.add-student-mandatory {
+  grid-area: add-student-mandatory;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2vh;
+}
+
+#add-student-name, #add-student-company {
+  display: flex;
+  column-gap: 3vw;
+}
+

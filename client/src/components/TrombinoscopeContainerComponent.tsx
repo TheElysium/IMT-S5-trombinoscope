@@ -1,9 +1,11 @@
 import PlusIcon from '../assets/plus.svg';
 import { StudentComponent } from "./StudentComponent";
 import { useEffect, useRef, useState } from "react";
+import {AddStudentComponent} from "./AddStudentComponent";
 
 export function TrombinoscopeContainerComponent() {
     const [scrollPosition, setScrollPosition] = useState(0);
+    const [showAddStudentForm, setShowAddStudentForm] = useState(false);
     const overlay = useRef(null);
     const grid = useRef(null);
 
@@ -26,7 +28,7 @@ export function TrombinoscopeContainerComponent() {
     return (
         <div id="trombinoscope-grid-container" onScroll={updateOverlayPosition} ref={grid}>
             <div id="trombinoscope-grid">
-                <div id="new-student">
+                <div id="new-student" onClick={() => setShowAddStudentForm(true)}>
                     <div id="new-student-content">
                         <img src={PlusIcon} alt="" />
                         ajouter
@@ -35,6 +37,8 @@ export function TrombinoscopeContainerComponent() {
                 {students()}
             </div>
             <div id="trombinoscope-grid-overlay" ref={overlay}></div>
+            {/*{showAddStudentForm && <AddStudentComponent />}*/}
+            <AddStudentComponent/>
         </div>
     );
 }
