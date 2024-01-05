@@ -125,6 +125,34 @@ html, body {
   gap: 2vw 2vw;
 }
 
+#new-student {
+  box-sizing: border-box;
+  background-color: #8570FC;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+
+#new-student:hover {
+  background-color: #7157FF;
+}
+
+#new-student:hover #new-student-content {
+  scale: 1.05;
+}
+
+#new-student-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #D8D4F1;
+  font-size: 2rem;
+  row-gap: 1vh;
+  transition: all 0.3s ease-in-out;
+}
+
 .student {
   box-sizing: border-box;
   position: relative;

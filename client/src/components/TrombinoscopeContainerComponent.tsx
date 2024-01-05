@@ -1,4 +1,4 @@
-import ArrowIcon from '../assets/carousel-arrow.svg';
+import PlusIcon from '../assets/plus.svg';
 import {StudentComponent} from "./StudentComponent";
 
 export function TrombinoscopeContainerComponent(){
@@ -26,6 +26,12 @@ export function TrombinoscopeContainerComponent(){
         </div>*/
         <div id="trombinoscope-grid-container">
             <div id="trombinoscope-grid">
+                <div id="new-student">
+                    <div id="new-student-content">
+                        <img src={PlusIcon} alt=""/>
+                        ajouter
+                    </div>
+                </div>
                 {students()}
             </div>
         </div>
