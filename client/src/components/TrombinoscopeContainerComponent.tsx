@@ -1,11 +1,14 @@
 import PlusIcon from '../assets/plus.svg';
 import {StudentComponent} from "./StudentComponent";
+import {useRef} from "react";
 
 export function TrombinoscopeContainerComponent(){
+    const overlay = useRef(null);
+
     const students = () => {
         const students = [];
         for (let i = 0; i < 30; i++) {
-            students.push(<StudentComponent/>)
+            students.push(<StudentComponent overlay={overlay}/>)
         }
         return students;
     }
@@ -34,6 +37,7 @@ export function TrombinoscopeContainerComponent(){
                 </div>
                 {students()}
             </div>
+            <div id="trombinoscope-grid-overlay" ref={overlay}></div>
         </div>
         )
 }

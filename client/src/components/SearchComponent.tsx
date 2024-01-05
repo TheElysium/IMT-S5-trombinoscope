@@ -4,7 +4,7 @@ export function SearchComponent(){
     return (
         <div id="search-bar">
             <img src={SearchIcon} alt="search"/>
-            <input type="text" placeholder="rechercher un étudiant, une promotion ..."/>
+            <input type="text" placeholder="rechercher un étudiant, une entreprise ..."/>
         </div>
     )
 }
