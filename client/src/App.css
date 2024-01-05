@@ -49,23 +49,25 @@ html, body {
   color: #AA9DF5;
   margin-right: 1.5vw;
   padding: 0 1vw;
-  max-width: 80%;
 }
 
+/* TODO transition on max-width */
 .selector h2 {
-  margin: 0 1vw;
   font-weight: 800;
   font-size: 1.8rem;
-  display: none;
   cursor: pointer;
+  transition: margin 0.3s ease-in-out;
+  max-width:0;
+  opacity:0;
+  margin: 0 0;
+  overflow:hidden;
 }
 
-.selector h2:first-child {
-  display: inline;
-}
-
-.selector:hover h2 {
-  display: inline;
+.selector h2:first-child, .selector:hover h2 {
+  max-width: fit-content;
+  opacity: 1;
+  margin: 0 1vw;
+  transform: translateX(0%);
 }
 
 .selector-selected, .selector h2:hover {
