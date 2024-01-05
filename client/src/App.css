@@ -133,6 +133,7 @@ html, body {
   justify-content: center;
   align-items: center;
   transition: all 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 #new-student:hover {
@@ -156,6 +157,7 @@ html, body {
 .student {
   box-sizing: border-box;
   position: relative;
+  cursor: pointer;
 }
 
 .student-profile-picture {
