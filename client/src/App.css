@@ -139,6 +139,11 @@ html, body {
   transition: opacity 0.3s ease-in-out;
 }
 
+#trombinoscope-grid-overlay.active {
+  z-index: 1;
+  opacity: .7;
+}
+
 #new-student {
   box-sizing: border-box;
   background-color: #8570FC;
@@ -243,6 +248,12 @@ html, body {
   padding: 2vh 1vw 2vh 3vw;
   min-width: 25vw;
   z-index: -1;
+  left: 0;
+}
+
+.student-detailed-infos.active {
+  display: block;
+  opacity: 1;
 }
 
 .student-detailed-infos p{
@@ -267,9 +278,3 @@ html, body {
   font-size: 1.2rem;
   transition: color 0.3s ease-in-out;
 }
-/*
-
-.student-selected {
-  transform: translate(-50%, -50%)
-}
-*/

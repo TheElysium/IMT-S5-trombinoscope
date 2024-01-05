@@ -7,38 +7,43 @@ export function StudentComponent({overlay, scrollPosition}){
     const studentDetailedInfos = useRef(null);
 
     const handleClick = () => {
-        studentDetailedInfos.current.style.display = "block";
-        studentDetailedInfos.current.style.opacity = "1";
-        studentDetailedInfos.current.style.left = `${studentTile.current.offsetWidth - 20}px`;
+        showStudentDetailedInfos();
+        moveStudentTile();
+        showOverlay();
+    }
 
-        console.log(scrollPosition)
+    const showStudentDetailedInfos = () => {
+        studentDetailedInfos.current.classList.add("active");
+        studentDetailedInfos.current.style.left = `${studentTile.current.offsetWidth - 20}px`;
+    }
+
+    const moveStudentTile = () => {
         const translateX = overlay.current.offsetWidth/2 - studentTile.current.offsetLeft - studentTile.current.offsetWidth/2 - studentDetailedInfos.current.offsetWidth/2;
         const translateY = overlay.current.offsetHeight/2 - studentTile.current.offsetTop - studentTile.current.offsetHeight/2 + scrollPosition;
         studentTile.current.style.transform = `translate(${translateX}px, ${translateY}px)`;
         studentTile.current.style.zIndex = "3";
-
-        overlay.current.style.zIndex = "1";
-        overlay.current.style.opacity = ".7";
-        overlay.current.addEventListener("click", reset);
     }
 
-    const reset = () => {
+    const showOverlay = () => {
+        overlay.current.classList.add("active");
+        overlay.current.addEventListener("click", handleOverlayClick);
+    }
+
+    const handleOverlayClick = () => {
         studentTile.current.style.transform = `translate(0px, 0px)`;
-
-        overlay.current.style.zIndex = "-1";
-        overlay.current.style.opacity = "0";
-
-        overlay.current.removeEventListener("click", reset);
-
-        studentDetailedInfos.current.style.display = "none";
-        studentDetailedInfos.current.style.opacity = "0";
-        studentDetailedInfos.current.style.left = "0px";
-
+        resetOverlay();
+        studentDetailedInfos.current.classList.remove("active");
         // Wait for the animation to end before resetting the z-index
         setTimeout(() => {
             studentTile.current.style.zIndex = "0";
         }, 300);
     }
+
+    const resetOverlay = () => {
+        overlay.current.classList.remove("active");
+        overlay.current.removeEventListener("click", handleOverlayClick);
+    }
+
     return (
         <div className="student" ref={studentTile} onClick={handleClick}>
             <img className="student-profile-picture" src={PlaceholderPic} alt="student"/>
