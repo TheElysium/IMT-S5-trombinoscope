@@ -1,9 +1,9 @@
 import UploadProfilePicture from '../assets/upload-profile-picture.svg';
 import UploadLogo from '../assets/upload-logo.svg';
 
-export function AddStudentComponent() {
+export function AddStudentComponent({showStudentComponent}) {
     return (
-        <form action="" id="add-student-form">
+        <form action="" id="add-student-form" className={showStudentComponent === true ? "active" : "inactive"}>
             <div className="add-student-profile-picture">
                 <div className="fake-label">photo</div>
                 <label htmlFor="photo">

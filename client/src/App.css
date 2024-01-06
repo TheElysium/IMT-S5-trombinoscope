@@ -280,7 +280,6 @@ html, body {
 }
 
 #add-student-form {
-  z-index: 2;
   position: absolute;
   /*center*/
   margin: auto;
@@ -304,6 +303,17 @@ html, body {
     "add-student-linkedin add-student-linkedin add-student-linkedin"
     "add-student-website add-student-website add-student-website"
     "add-student-submit add-student-submit add-student-submit";
+  transition: scale 0.3s ease-in-out;
+}
+
+#add-student-form.inactive {
+  z-index: -2;
+  scale: 0;
+}
+
+#add-student-form.active {
+  z-index: 2;
+  scale: 1;
 }
 
 #add-student-form input[type=text],
