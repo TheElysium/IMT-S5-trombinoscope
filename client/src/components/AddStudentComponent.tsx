@@ -50,6 +50,9 @@ export function AddStudentComponent() {
                 <label htmlFor="website">site web</label>
                 <input type="text" name="website" id="website" placeholder="https://beaugosse.com"/>
             </div>
+            <div className="add-student-submit">
+                <input type="submit" value="ajouter +"></input>
+            </div>
         </form>
     )
 }

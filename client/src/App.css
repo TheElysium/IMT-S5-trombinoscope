@@ -289,7 +289,7 @@ html, body {
   top: 0;
   bottom: 0;
   width: 50%;
-  height: 80%;
+  height: fit-content;
   border-radius: 1rem;
   background-color: #A99BF2;
   padding: 2vw;
@@ -302,19 +302,28 @@ html, body {
     "add-student-profile-picture add-student-mandatory add-student-mandatory"
     "add-student-description add-student-description add-student-description"
     "add-student-linkedin add-student-linkedin add-student-linkedin"
-    "add-student-website add-student-website add-student-website";
+    "add-student-website add-student-website add-student-website"
+    "add-student-submit add-student-submit add-student-submit";
 }
 
 #add-student-form input[type=text],
 #add-student-form textarea {
   width: 100%;
-  background-color: #7157FF;
+  background-color: #8570FC;
   border: none;
   border-radius: 1rem;
   color: #D8D4F1;
   font-size: 1.2rem;
   padding-left: 1vw;
   box-sizing: border-box;
+  transition: background-color 0.3s ease-in-out;
+}
+
+#add-student-form input[type=text]:focus,
+#add-student-form textarea:focus,
+#add-student-form input[type=text]:hover,
+#add-student-form textarea:hover{
+  background-color: #7157FF;
 }
 
 #add-student-form input[type=text] {
@@ -368,12 +377,18 @@ html, body {
 .add-student-profile-picture label {
   border-radius: 1rem;
   aspect-ratio: 1/1;
-  background-color: #7157FF;
+  background-color: #8570FC;
   height: 15vh;
   margin-top: 1vh;
   cursor: pointer;
   display: flex;
   justify-content: center;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.add-student-profile-picture label:hover,
+.add-student-company-logo label:hover {
+  background-color: #7157FF;
 }
 
 .add-student-profile-picture label img {
@@ -383,13 +398,14 @@ html, body {
 .add-student-company-logo label {
   border-radius: 1rem;
   aspect-ratio: 1/1;
-  background-color: #7157FF;
+  background-color: #8570FC;
   margin-top: 1vh;
   height: 5vh;
   cursor: pointer;
   color: white;
   display: flex;
   justify-content: center;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .add-student-company-logo label img {
@@ -420,6 +436,29 @@ html, body {
   display: flex;
   flex-direction: column;
   row-gap: 2vh;
+}
+
+.add-student-submit {
+  grid-area: add-student-submit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-student-submit input[type=submit] {
+  width: 10vw;
+  height: 5vh;
+  background-color: #7157FF;
+  border: none;
+  border-radius: 1rem;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: scale 0.3s ease-in-out;
+}
+
+.add-student-submit input[type=submit]:hover {
+ scale: 1.05;
 }
 
 #add-student-name, #add-student-company {
