@@ -280,6 +280,7 @@ html, body {
 }
 
 #add-student-form {
+  z-index: 2;
   position: absolute;
   /*center*/
   margin: auto;
@@ -324,6 +325,10 @@ html, body {
   display: block;
   margin-top: 1vh;
   font-family: "Syne", sans-serif;
+}
+
+#add-student-form textarea {
+  padding-top: 1vh;
 }
 
 #add-student-form input:focus, #add-student-form textarea:focus {

@@ -17,6 +17,18 @@ export function TrombinoscopeContainerComponent() {
         setScrollPosition(grid.current.scrollTop);
     };
 
+    const handleNewStudentClick = () => {
+        setShowAddStudentForm(true);
+        overlay.current.classList.add("active");
+        overlay.current.addEventListener("click", handleOverlayClick);
+    }
+
+    const handleOverlayClick = () => {
+        setShowAddStudentForm(false);
+        overlay.current.classList.remove("active");
+        overlay.current.removeEventListener("click", handleOverlayClick);
+    }
+
     const students = () => {
         const students = [];
         for (let i = 0; i < 30; i++) {
@@ -28,7 +40,7 @@ export function TrombinoscopeContainerComponent() {
     return (
         <div id="trombinoscope-grid-container" onScroll={updateOverlayPosition} ref={grid}>
             <div id="trombinoscope-grid">
-                <div id="new-student" onClick={() => setShowAddStudentForm(true)}>
+                <div id="new-student" onClick={handleNewStudentClick}>
                     <div id="new-student-content">
                         <img src={PlusIcon} alt="" />
                         ajouter
