@@ -282,8 +282,13 @@ html, body {
 #add-student-form {
   position: absolute;
   /*center*/
-  top: 25%;
-  left: 25%;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  height: 80%;
   border-radius: 1rem;
   background-color: #A99BF2;
   padding: 2vw;
@@ -305,16 +310,20 @@ html, body {
   background-color: #7157FF;
   border: none;
   border-radius: 1rem;
-  height: 5vh;
-  color: white;
+  color: #D8D4F1;
   font-size: 1.2rem;
   padding-left: 1vw;
   box-sizing: border-box;
 }
 
-#add-student-form input {
+#add-student-form input[type=text] {
+  height: 5vh;
+}
+
+#add-student-form input, #add-student-form textarea {
   display: block;
   margin-top: 1vh;
+  font-family: "Syne", sans-serif;
 }
 
 #add-student-form input:focus, #add-student-form textarea:focus {
@@ -325,6 +334,12 @@ html, body {
   color: #7157FF;
   font-size: 1.4rem;
   font-weight: 700;
+}
+
+#add-student-form input::placeholder,
+#add-student-form textarea::placeholder {
+  color: #D8D4F1;
+  font-family: "Syne", sans-serif;
 }
 
 /*#add-student-form input[type=file] {
@@ -352,6 +367,12 @@ html, body {
   height: 15vh;
   margin-top: 1vh;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+
+.add-student-profile-picture label img {
+  width: 60%;
 }
 
 .add-student-company-logo label {
@@ -360,8 +381,14 @@ html, body {
   background-color: #7157FF;
   margin-top: 1vh;
   height: 5vh;
-  display: inline-block;
   cursor: pointer;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.add-student-company-logo label img {
+  width: 50%;
 }
 
 .add-student-description {

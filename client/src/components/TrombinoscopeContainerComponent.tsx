@@ -37,8 +37,7 @@ export function TrombinoscopeContainerComponent() {
                 {students()}
             </div>
             <div id="trombinoscope-grid-overlay" ref={overlay}></div>
-            {/*{showAddStudentForm && <AddStudentComponent />}*/}
-            <AddStudentComponent/>
+            {showAddStudentForm && <AddStudentComponent />}
         </div>
     );
 }
