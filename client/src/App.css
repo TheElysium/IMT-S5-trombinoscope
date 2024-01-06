@@ -405,6 +405,12 @@ html, body {
   width: 60%;
 }
 
+.add-student-profile-picture .image-preview,
+.add-student-company-logo .image-preview {
+  width: 100%;
+  border-radius: 1rem;
+}
+
 .add-student-company-logo label {
   border-radius: 1rem;
   aspect-ratio: 1/1;

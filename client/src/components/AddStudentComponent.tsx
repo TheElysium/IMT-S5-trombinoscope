@@ -1,15 +1,48 @@
+import React, { useState } from 'react';
 import UploadProfilePicture from '../assets/upload-profile-picture.svg';
 import UploadLogo from '../assets/upload-logo.svg';
 
-export function AddStudentComponent({showStudentComponent}) {
+export function AddStudentComponent({ showStudentComponent }) {
+    const [profilePicturePreview, setProfilePicturePreview] = useState<string | null>(null);
+    const [companyLogoPreview, setCompanyLogoPreview] = useState<string | null>(null);
+
+
+    const handleProfilePictureChange = (event) => {
+        const file = event.target.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setProfilePicturePreview(reader.result as string);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    const handleCompanyLogoChange = (event) => {
+        const file = event.target.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setCompanyLogoPreview(reader.result as string);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
     return (
         <form action="" id="add-student-form" className={showStudentComponent === true ? "active" : "inactive"}>
             <div className="add-student-profile-picture">
                 <div className="fake-label">photo</div>
                 <label htmlFor="photo">
-                    <img src={UploadProfilePicture} alt=""/>
+                    {profilePicturePreview ? (
+                        <img src={profilePicturePreview} alt="Profile Preview" className="image-preview" />
+                    ) : (
+                        <img src={UploadProfilePicture} alt="" />
+                    )}
                 </label>
-                <input type="file" name="photo" id="photo" alt="profile picture"/>
+                <input type="file" name="photo" id="photo" onChange={handleProfilePictureChange} />
             </div>
 
             <div className="add-student-mandatory">
@@ -32,9 +65,13 @@ export function AddStudentComponent({showStudentComponent}) {
                     <div className="add-student-company-logo">
                         <div className="fake-label">logo</div>
                         <label htmlFor="company-logo">
-                            <img src={UploadLogo} alt=""/>
+                            {companyLogoPreview ? (
+                                <img src={companyLogoPreview} alt="Company Logo Preview" className="image-preview"/>
+                            ) : (
+                                <img src={UploadLogo} alt="" />
+                            )}
                         </label>
-                        <input type="file" name="company-logo" id="company-logo" alt="company logo"/>
+                        <input type="file" name="company-logo" id="company-logo" onChange={handleCompanyLogoChange} />
                     </div>
                 </div>
             </div>
