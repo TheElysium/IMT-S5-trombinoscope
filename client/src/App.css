@@ -432,6 +432,11 @@ html, body {
   grid-area: add-student-description;
 }
 
+.add-student-description span {
+  font-size: .8rem;
+  padding-left: .5vw;
+}
+
 .add-student-linkedin {
   grid-area: add-student-linkedin;
 }
@@ -481,4 +486,14 @@ html, body {
   display: flex;
   column-gap: 3vw;
 }
+
+.error {
+  outline: 2px solid #be3e3e;
+}
+
+.error-message {
+  padding-top: .5vh;
+  color: #be3e3e;
+}
+
 
