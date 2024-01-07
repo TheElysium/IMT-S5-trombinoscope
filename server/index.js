@@ -14,12 +14,12 @@ const schema = buildSchema(`
   
   type Student {
     id: ID
-    last_name: String
-    first_name: String
+    lastName: String
+    firstName: String
     description: String
     email: String
     linkedin: String
-    profile_picture: String
+    profilePicture: String
     company: Company
   }
 

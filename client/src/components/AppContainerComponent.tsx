@@ -1,38 +1,50 @@
-import {TrombinoscopeContainerComponent} from "./TrombinoscopeContainerComponent";
-import {SelectorComponent} from "./SelectorComponent.tsx";
-import {SearchComponent} from "./SearchComponent.tsx";
-import {useEffect, useState} from "react";
-import {gql, request} from "graphql-request";
-import {GRAPHQL_ENDPOINT} from "../constants.ts";
-import {useQuery} from "@tanstack/react-query";
-import {programToSelectorOption, promotionToSelectorOption} from "../types.ts";
+import { useEffect, useState } from "react";
+import { gql, request } from "graphql-request";
+import { useQuery } from "@tanstack/react-query";
+import { GRAPHQL_ENDPOINT } from "../constants.ts";
+import { programToSelectorOption, promotionToSelectorOption } from "../types.ts";
+import { TrombinoscopeContainerComponent } from "./TrombinoscopeContainerComponent";
+import { SelectorComponent } from "./SelectorComponent.tsx";
+import { SearchComponent } from "./SearchComponent.tsx";
 
-export function AppContainerComponent() {
+interface Program {
+    id: string;
+    name: string;
+}
 
-    const [selectedProgramId, setSelectedProgramId] = useState<string>();
-    const [selectedPromotionId, setSelectedPromotionId] = useState<string>();
+interface Promotion {
+    id: string;
+    year: number;
+}
+
+interface AppContainerProps {}
+
+export function AppContainerComponent({}: AppContainerProps): JSX.Element {
+    const [selectedProgramId, setSelectedProgramId] = useState<string | undefined>();
+    const [selectedPromotionId, setSelectedPromotionId] = useState<string | undefined>();
 
     const programsQuery = gql`
-        query programs {
-            programs {
-                id,
-                name
-            }
-        }
-    `;
+    query programs {
+      programs {
+        id
+        name
+      }
+    }
+  `;
 
     const loadPrograms = async () => {
         const response = await request(GRAPHQL_ENDPOINT, programsQuery);
-        setSelectedProgramId(response.programs[0].id);
+        setSelectedProgramId(response.programs[0]?.id);
         return response;
     };
+
     const {
         isLoading: isLoadingPrograms,
         error: errorPrograms,
         data: dataPrograms,
-        refetch: refetchPrograms
-    } = useQuery({
-        queryKey: ['programs'],
+        refetch: refetchPrograms,
+    } = useQuery<{ programs: Program[] }>({
+        queryKey: ["programs"],
         queryFn: loadPrograms,
     });
 
@@ -55,15 +67,15 @@ export function AppContainerComponent() {
         isLoading: isLoadingPromotions,
         error: errorPromotions,
         data: dataPromotions,
-        refetch: refetchPromotions
-    } = useQuery({
-        queryKey: ['promotions', selectedProgramId],
+        refetch: refetchPromotions,
+    } = useQuery<{ promotions: Promotion[] }>({
+        queryKey: ["promotions", selectedProgramId],
         queryFn: loadPromotions,
-        enabled: !!selectedProgramId
+        enabled: !!selectedProgramId,
     });
 
     useEffect(() => {
-        refetchPromotions();
+        if (selectedProgramId) refetchPromotions();
     }, [refetchPromotions, selectedProgramId]);
 
     return (
@@ -71,24 +83,24 @@ export function AppContainerComponent() {
             <h1 id="vertical-title">trombinoscope</h1>
             <div id="app-content">
                 <div id="top-bar">
-                    {dataPrograms &&
+                    {dataPrograms && (
                         <SelectorComponent
                             selected={selectedProgramId}
                             options={dataPrograms.programs.map((p) => programToSelectorOption(p))}
                             setSelected={setSelectedProgramId}
                         />
-                    }
-                    {dataPromotions &&
+                    )}
+                    {dataPromotions && (
                         <SelectorComponent
                             selected={selectedPromotionId}
                             options={dataPromotions.promotions.map((p) => promotionToSelectorOption(p))}
                             setSelected={setSelectedPromotionId}
                         />
-                    }
+                    )}
                     <SearchComponent />
                 </div>
-                <TrombinoscopeContainerComponent/>
+                <TrombinoscopeContainerComponent promotionId={selectedPromotionId} />
             </div>
         </div>
-    )
+    );
 }

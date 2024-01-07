@@ -31,12 +31,12 @@ function generateRandomStudentsWithId() {
         const studentId = faker.datatype.uuid();
         const student = {
             id: studentId,
-            last_name: faker.name.lastName(),
-            first_name: faker.name.firstName(),
+            lastName: faker.name.lastName(),
+            firstName: faker.name.firstName(),
             description: faker.lorem.sentence(),
             email: faker.internet.email(),
             linkedin: faker.internet.url(),
-            profile_picture: faker.image.avatar(),
+            profilePicture: faker.image.avatar(),
             company: {
                 name: faker.company.companyName(),
                 logo: faker.image.business(),

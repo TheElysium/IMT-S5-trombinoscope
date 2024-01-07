@@ -1,8 +1,9 @@
 import PlaceholderPic from '../assets/placeholder.png';
 import PlaceholderCompanyPic from '../assets/placeholder-company.png';
 import {useRef} from "react";
+import {Student} from "../types.ts";
 
-export function StudentComponent({overlay, scrollPosition}){
+export function StudentComponent({overlay, scrollPosition, student}: {overlay: any, scrollPosition: number, student: Student}){
     const studentTile = useRef(null);
     const studentDetailedInfos = useRef(null);
 
@@ -49,8 +50,8 @@ export function StudentComponent({overlay, scrollPosition}){
             <img className="student-profile-picture" src={PlaceholderPic} alt="student"/>
             <div className="student-overlay"></div>
             <div className="student-main-infos">
-                <h3>Prénom</h3>
-                <h3>NOM</h3>
+                <h3>{student.firstName}</h3>
+                <h3>{student.lastName.toUpperCase()}</h3>
                 <img className="company-icon" src={PlaceholderCompanyPic} alt=""/>
             </div>
             <div className="student-detailed-infos" ref={studentDetailedInfos}>

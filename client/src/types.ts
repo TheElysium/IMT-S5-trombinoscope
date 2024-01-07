@@ -29,11 +29,19 @@ export const programToSelectorOption = (program: Program): SelectorOption => {
     }
 }
 
+export type Company = {
+    name: string
+    logo: File
+}
+
 export type Student = {
     id: string;
     firstName: string;
     lastName: string;
+    profilePicture: File;
     email: string;
     linkedin: string;
     description: string;
+    company: Company;
 }
+
