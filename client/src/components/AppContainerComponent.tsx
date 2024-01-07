@@ -7,7 +7,7 @@ import {GRAPHQL_ENDPOINT} from "../constants.ts";
 import {useQuery} from "@tanstack/react-query";
 import {programToSelectorOption, promotionToSelectorOption} from "../types.ts";
 
-export function AppContainerComponent(){
+export function AppContainerComponent() {
 
     const [selectedProgramId, setSelectedProgramId] = useState<string>();
     const [selectedPromotionId, setSelectedPromotionId] = useState<string>();
@@ -36,7 +36,7 @@ export function AppContainerComponent(){
         queryFn: loadPrograms,
     });
 
-    let promotionsQuery = gql`
+    const promotionsQuery = gql`
         query promotions {
             promotions(programId: "${selectedProgramId}") {
                 id,
@@ -61,6 +61,11 @@ export function AppContainerComponent(){
         queryFn: loadPromotions,
         enabled: !!selectedProgramId
     });
+
+    useEffect(() => {
+        refetchPromotions();
+    }, [refetchPromotions, selectedProgramId]);
+
     return (
         <div id="app-container">
             <h1 id="vertical-title">trombinoscope</h1>

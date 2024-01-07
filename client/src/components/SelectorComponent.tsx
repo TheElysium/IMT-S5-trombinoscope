@@ -5,7 +5,6 @@ export function SelectorComponent({selected, options, setSelected}: {
     options: SelectorOption[],
     setSelected: (option: string) => void
 }) {
-    console.log(options)
     const renderSelectors = () => {
         return (
             <div className="selector">
@@ -13,8 +12,7 @@ export function SelectorComponent({selected, options, setSelected}: {
                 {options
                     .filter((option: SelectorOption) => option.id !== selected)
                     .map((option: SelectorOption) => (
-                        <h2 key={option.id} onClick={() => {setSelected(option.id);
-                            console.log(option.id)}}>
+                        <h2 key={option.id} onClick={() => setSelected(option.id)}>
                             {option.value}
                         </h2>
                     ))}
