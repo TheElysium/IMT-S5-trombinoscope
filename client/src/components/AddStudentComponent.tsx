@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import UploadProfilePicture from '../assets/upload-profile-picture.svg';
 import UploadLogo from '../assets/upload-logo.svg';
 import {SubmitHandler, useForm} from "react-hook-form";
@@ -14,7 +14,7 @@ type Inputs = {
     companyLogo: File,
 }
 
-export function AddStudentComponent({ showStudentComponent }) {
+export function AddStudentComponent({showStudentComponent}) {
     const [profilePicturePreview, setProfilePicturePreview] = useState<string | null>(null);
     const [companyLogoPreview, setCompanyLogoPreview] = useState<string | null>(null);
     const linkedinPattern = /^https:\/\/www\.linkedin\.com\/in\/[a-zA-Z0-9-]+\/?$/;
@@ -25,7 +25,7 @@ export function AddStudentComponent({ showStudentComponent }) {
         register,
         handleSubmit,
         watch,
-        formState: { errors },
+        formState: {errors},
     } = useForm<Inputs>({mode: "onBlur"})
     const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
 
@@ -63,12 +63,13 @@ export function AddStudentComponent({ showStudentComponent }) {
                 <div className="fake-label">photo</div>
                 <label htmlFor="photo">
                     {profilePicturePreview ? (
-                        <img src={profilePicturePreview} alt="Profile Preview" className="image-preview" />
+                        <img src={profilePicturePreview} alt="Profile Preview" className="image-preview"/>
                     ) : (
-                        <img src={UploadProfilePicture} alt="" />
+                        <img src={UploadProfilePicture} alt=""/>
                     )}
                 </label>
-                <input type="file" name="photo" id="photo" onChange={handleProfilePictureChange} {...register("profilePicture")} />
+                <input type="file" name="photo"
+                       id="photo" {...register("profilePicture", {onChange: handleProfilePictureChange})} />
             </div>
 
             <div className="add-student-mandatory">
@@ -108,12 +109,12 @@ export function AddStudentComponent({ showStudentComponent }) {
                             {companyLogoPreview ? (
                                 <img src={companyLogoPreview} alt="Company Logo Preview" className="image-preview"/>
                             ) : (
-                                <img src={UploadLogo} alt="" />
+                                <img src={UploadLogo} alt=""/>
                             )}
                         </label>
                         <input
-                            type="file" name="company-logo" id="company-logo" onChange={handleCompanyLogoChange}
-                            {...register("companyLogo")}
+                            type="file" name="company-logo" id="company-logo"
+                            {...register("companyLogo", {onChange: handleCompanyLogoChange})}
                         />
                     </div>
                 </div>
@@ -125,7 +126,8 @@ export function AddStudentComponent({ showStudentComponent }) {
                     id="description" className={errors.description ? "error" : ""}
                     {...register("description", {maxLength: descriptionMaxLength})}
                 ></textarea>
-                {errors.description && <span className="error-message">La description doit faire moins de 100 caractères</span>}
+                {errors.description &&
+                    <span className="error-message">La description doit faire moins de 100 caractères</span>}
             </div>
             <div className="add-student-linkedin">
                 <label htmlFor="linkedin">profil LinkedIn</label>
