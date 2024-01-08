@@ -3,6 +3,7 @@ const {graphqlHTTP} = require('express-graphql');
 const {buildSchema} = require('graphql');
 const {generateRandomData} = require('./data-generator');
 const cors = require('cors');
+const faker = require('faker');
 
 const data = generateRandomData();
 
@@ -41,6 +42,20 @@ const schema = buildSchema(`
     students(promotionId: ID!): [Student]
     student(studentId: ID!): Student
   }
+  
+  type Mutation {
+    addStudent(
+        promotionId: ID!, 
+        lastName: String!, 
+        firstName: String!, 
+        description: String, 
+        email: String, 
+        linkedin: String, 
+        profilePicture: String, 
+        companyName: String, 
+        companyLogo: String
+    ): Student
+  }
 `);
 
 const resolvers = {
@@ -71,6 +86,29 @@ const resolvers = {
             }
         }
         return null;
+    },
+    addStudent: ({ promotionId, lastName, firstName, description, email, linkedin, profilePicture, companyName, companyLogo }) => {
+        const newStudent = {
+            id: faker.datatype.uuid(),
+            lastName,
+            firstName,
+            description,
+            email,
+            linkedin,
+            profilePicture,
+            company: {name: companyName, logo: companyLogo}
+        };
+
+        for (const program of data.programs) {
+            for (const promotion of program.promotions) {
+                if (promotion.id === promotionId) {
+                    promotion.students.push(newStudent);
+                    return newStudent;
+                }
+            }
+        }
+
+        return newStudent;
     },
 };
 
