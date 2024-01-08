@@ -84,6 +84,7 @@ app.use(
         graphiql: true,
     })
 );
+app.use('/profile-pictures', express.static('profile-pictures'));
 
 const port = 4000;
 app.listen(port, () => {

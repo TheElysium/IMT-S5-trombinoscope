@@ -45,9 +45,11 @@ export function StudentComponent({overlay, scrollPosition, student}: {overlay: a
         overlay.current.removeEventListener("click", handleOverlayClick);
     }
 
+    console.log(student.profilePicture)
+
     return (
         <div className="student" ref={studentTile} onClick={handleClick}>
-            <img className="student-profile-picture" src={PlaceholderPic} alt="student"/>
+            <img className="student-profile-picture" src={student.profilePicture} alt="student"/>
             <div className="student-overlay"></div>
             <div className="student-main-infos">
                 <h3>{student.firstName}</h3>
@@ -55,14 +57,14 @@ export function StudentComponent({overlay, scrollPosition, student}: {overlay: a
                 <img className="company-icon" src={PlaceholderCompanyPic} alt=""/>
             </div>
             <div className="student-detailed-infos" ref={studentDetailedInfos}>
-                <p><span>Promotion :</span> FIL 2024</p>
-                <p><span>Entreprise :</span> Google</p>
-                <br/>
-                <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.”</p>
-                <br/>
+                <div className="student-promo-company">
+                    <p><span>Promotion :</span> FIL 2024</p>
+                    <p><span>Entreprise :</span> {student.company.name}</p>
+                </div>
+                <p className="student-description">“{student.description}”</p>
                 <div className="student-links">
-                    <a href="">Profil LinkedIn ↗</a>
-                    <a href="">Site web ↗</a>
+                    <a href={student.linkedin}>Profil LinkedIn ↗</a>
+                    <a href={student.email}>Site web ↗</a>
                 </div>
             </div>
         </div>

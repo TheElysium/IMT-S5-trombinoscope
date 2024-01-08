@@ -36,7 +36,7 @@ function generateRandomStudentsWithId() {
             description: faker.lorem.sentence(),
             email: faker.internet.email(),
             linkedin: faker.internet.url(),
-            profilePicture: faker.image.avatar(),
+            profilePicture: `http://localhost:4000/profile-pictures/profile-pic-${Math.floor(Math.random()*15)}.jpg`,
             company: {
                 name: faker.company.companyName(),
                 logo: faker.image.business(),
