@@ -31,14 +31,14 @@ export const programToSelectorOption = (program: Program): SelectorOption => {
 
 export type Company = {
     name: string
-    logo: File
+    logo: string
 }
 
 export type Student = {
     id: string;
     firstName: string;
     lastName: string;
-    profilePicture: File;
+    profilePicture: string;
     email: string;
     linkedin: string;
     description: string;

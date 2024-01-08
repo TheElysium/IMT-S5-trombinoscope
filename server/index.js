@@ -85,6 +85,7 @@ app.use(
     })
 );
 app.use('/profile-pictures', express.static('profile-pictures'));
+app.use('/company-logos', express.static('company-logos'));
 
 const port = 4000;
 app.listen(port, () => {

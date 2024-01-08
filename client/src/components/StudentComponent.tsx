@@ -54,7 +54,7 @@ export function StudentComponent({overlay, scrollPosition, student}: {overlay: a
             <div className="student-main-infos">
                 <h3>{student.firstName}</h3>
                 <h3>{student.lastName.toUpperCase()}</h3>
-                <img className="company-icon" src={PlaceholderCompanyPic} alt=""/>
+                <img className="company-icon" src={student.company.logo} alt=""/>
             </div>
             <div className="student-detailed-infos" ref={studentDetailedInfos}>
                 <div className="student-promo-company">
