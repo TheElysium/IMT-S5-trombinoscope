@@ -3,6 +3,7 @@ html, body {
   padding: 0;
   background-color: var(--background-color);
   font-family: "Syne", sans-serif;
+  font-size: 100%;
 }
 
 #app-container {
@@ -15,7 +16,7 @@ html, body {
 #vertical-title {
   background-color: var(--background-color-light);
   font-weight: 800;
-  font-size: 3.8rem;
+  font-size: 5.5vh;
   color: var(--text-color-light);
   writing-mode: vertical-rl;
   transform: rotate(180deg);
@@ -222,7 +223,8 @@ html, body {
 
 .company-icon {
   margin-top: 0.5vw;
-  height: 1.3vw;
+  max-height: 2vw;
+  max-width: 8vh;
   opacity: 0; /* Initially hidden */
   position: absolute;
   transition: opacity 0.3s ease-in-out, bottom 0.3s ease-in-out;
@@ -510,3 +512,34 @@ html, body {
 }
 
 
+/* breakpoints */
+@media screen and (max-width: 1700px) {
+  html, body {
+    font-size: 90%;
+  }
+  #trombinoscope-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  html, body {
+    font-size: 80%;
+  }
+  #trombinoscope-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+}
+
+@media screen and (max-width: 1000px) {
+  #trombinoscope-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #trombinoscope-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
