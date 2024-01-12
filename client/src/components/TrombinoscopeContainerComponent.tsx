@@ -99,6 +99,7 @@ export function TrombinoscopeContainerComponent({
                 student={student}
                 overlay={overlay}
                 scrollPosition={scrollPosition}
+                promotion={promotionId}
             />
         ));
     };

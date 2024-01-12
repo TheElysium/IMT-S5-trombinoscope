@@ -3,7 +3,7 @@ import PlaceholderCompanyPic from '../assets/placeholder-company.png';
 import {useRef} from "react";
 import {Student} from "../types.ts";
 
-export function StudentComponent({overlay, scrollPosition, student}: {overlay: any, scrollPosition: number, student: Student}){
+export function StudentComponent({overlay, scrollPosition, student, promotion}: {overlay: any, scrollPosition: number, student: Student}){
     const studentTile = useRef(null);
     const studentDetailedInfos = useRef(null);
 
@@ -56,7 +56,7 @@ export function StudentComponent({overlay, scrollPosition, student}: {overlay: a
             </div>
             <div className="student-detailed-infos" ref={studentDetailedInfos}>
                 <div className="student-promo-company">
-                    <p><span>Promotion :</span> FIL 2024</p>
+                    <p><span>Promotion :</span> {promotion}</p>
                     <p><span>Entreprise :</span> {student.company.name}</p>
                 </div>
                 <p className="student-description">“{student.description}”</p>
