@@ -45,8 +45,6 @@ export function StudentComponent({overlay, scrollPosition, student}: {overlay: a
         overlay.current.removeEventListener("click", handleOverlayClick);
     }
 
-    console.log(student.profilePicture)
-
     return (
         <div className="student" ref={studentTile} onClick={handleClick}>
             <img className="student-profile-picture" src={student.profilePicture} alt="student"/>

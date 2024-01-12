@@ -51,9 +51,7 @@ const schema = buildSchema(`
         description: String, 
         email: String, 
         linkedin: String, 
-        profilePicture: String, 
         companyName: String, 
-        companyLogo: String
     ): Student
   }
 `);
@@ -99,16 +97,16 @@ const resolvers = {
             company: {name: companyName, logo: companyLogo}
         };
 
-        for (const program of data.programs) {
+/*        for (const program of data.programs) {
             for (const promotion of program.promotions) {
                 if (promotion.id === promotionId) {
                     promotion.students.push(newStudent);
                     return newStudent;
                 }
             }
-        }
+        }*/
 
-        return newStudent;
+        return null;
     },
 };
 
@@ -124,6 +122,11 @@ app.use(
 );
 app.use('/profile-pictures', express.static('profile-pictures'));
 app.use('/company-logos', express.static('company-logos'));
+
+app.post('/form-images', (req, res) => {
+
+});
+
 
 const port = 4000;
 app.listen(port, () => {

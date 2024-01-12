@@ -2,17 +2,21 @@ import React, {useState} from 'react';
 import UploadProfilePicture from '../assets/upload-profile-picture.svg';
 import UploadLogo from '../assets/upload-logo.svg';
 import {SubmitHandler, useForm} from "react-hook-form";
+import {gql, request} from "graphql-request";
+import {useMutation} from "@tanstack/react-query";
+import {GRAPHQL_ENDPOINT} from "../constants";
 
 type Inputs = {
     firstName: string,
     lastName: string,
-    company: string,
+    companyName: string,
     description: string,
     linkedin: string,
     website: string,
     profilePicture: File,
     companyLogo: File,
 }
+
 
 export function AddStudentComponent({showStudentComponent}) {
     const [profilePicturePreview, setProfilePicturePreview] = useState<string | null>(null);
@@ -27,8 +31,43 @@ export function AddStudentComponent({showStudentComponent}) {
         watch,
         formState: {errors},
     } = useForm<Inputs>({mode: "onBlur"})
-    const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
 
+
+
+    const onSubmit: SubmitHandler<Inputs> = (data) => sendStudent(data);
+
+    const sendStudent = async (data) => {
+        const mutationQuery = gql`
+            mutation {
+                addStudent(
+                    promotionId: "FIL-2027"
+                    lastName: "${data.lastName}"
+                    firstName: "${data.firstName}"
+                    description: "${data.description}"
+                    email: "${data.website}"
+                    linkedin: "${data.linkedin}"
+                    profilePicture: "${data.profilePicture}"
+                    companyName: "${data.companyName}"  
+                    companyLogo: "${data.companyLogo}"
+                ) {
+                    id
+                    lastName
+                    firstName
+                    description
+                    email
+                    linkedin
+                    profilePicture
+                    company {
+                        name
+                        logo
+                    }
+                }
+            }
+        `;
+        console.log(mutationQuery)
+        return;
+        // return await request(GRAPHQL_ENDPOINT, mutationQuery);
+    }
     const handleProfilePictureChange = (event) => {
         const file = event.target.files[0];
 
@@ -99,7 +138,7 @@ export function AddStudentComponent({showStudentComponent}) {
                         <input
                             type="text" name="company" placeholder="Ranch Corp"
                             id="company" className={errors.company ? "error" : ""}
-                            {...register("company", {required: true})}
+                            {...register("companyName", {required: true})}
                         />
                         {errors.company && <span className="error-message">Ce champ est obligatoire</span>}
                     </div>
